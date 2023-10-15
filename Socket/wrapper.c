@@ -21,3 +21,40 @@ int Socket(int family, int type, int protocol)
 
   return(n);
 }
+
+
+void Connect(int sockfd, struct sockaddr_in servaddr)
+{
+    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
+      fprintf(stderr,"connect error\n");
+      exit(1);
+    }
+}
+
+void Bind(int listenfd, struct sockaddr_in servaddr)
+{
+  if ( bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0 ){
+    perror("bind");
+    exit(1);
+  }
+}
+
+void Listen(int listenfd, int num)
+{
+  if ( listen(listenfd, num) < 0 ) {
+    perror("listen");
+    exit(1);
+  }
+}
+
+
+int Accept(int listenfd, struct sockaddr_in *servaddr, socklen_t *addrlen)
+{
+  int connfd;
+  if ( connfd = accept(listenfd, (struct sockaddr *) servaddr, addrlen)< 0 ) {
+    perror("accept");
+    exit(1);
+  }
+
+  return connfd;
+}

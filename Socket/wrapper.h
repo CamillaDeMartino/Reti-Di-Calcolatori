@@ -7,12 +7,9 @@
 
 
 int Socket(int family, int type, int protocol);
+void Connect(int sockfd, struct sockaddr_in servaddr);
+void Bind(int listenfd, struct sockaddr_in servaddr);
+void Listen(int listenfd, int num);
+int Accept(int listenfd, struct sockaddr_in *servaddr, socklen_t *addrlen);
 
-/*void Connect(int sockfd, struct sockaddr servaddr)
-{
-    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
-        fprintf(stderr,"connect error\n");
-        exit(1);
-    }
-}*/
 

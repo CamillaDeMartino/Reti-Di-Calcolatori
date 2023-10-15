@@ -35,10 +35,15 @@ int main(int argc, char **argv)
         fprintf(stderr,"inet_pton error for %s\n", argv[1]);
         exit (1);
     }
-    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
+
+    //connect utilizzando wrapper
+    Connect(sockfd, (struct sockaddr_in) servaddr);
+    /*if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
         fprintf(stderr,"connect error\n");
         exit(1);
-    }
+    }*/
+
+    
     while ( (n = read(sockfd, recvline, 1024)) > 0) {
         recvline[n] = 0;
         if (fputs(recvline, stdout) == EOF) {
