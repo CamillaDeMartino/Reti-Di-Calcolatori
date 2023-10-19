@@ -52,11 +52,12 @@ int main(int argc, char **argv)
     for ( ; ; ) {
 
         //funzione wrapper
-        connfd = Accept(listenfd, NULL, NULL);
+        connfd = Accept(listenfd, (struct sockaddr *)NULL, NULL);
         /*if ( ( connfd = accept(listenfd, (struct sockaddr *) NULL, NULL) ) < 0 ) {
             perror("accept");
             exit(1);
         }*/
+        
         ticks = time(NULL);
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
         if ( write(connfd, buff, strlen(buff)) != strlen(buff)) {

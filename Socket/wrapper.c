@@ -25,7 +25,7 @@ int Socket(int family, int type, int protocol)
 
 void Connect(int sockfd, struct sockaddr_in servaddr)
 {
-    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
+    if ( connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0 ) {
       fprintf(stderr,"connect error\n");
       exit(1);
     }
@@ -48,12 +48,12 @@ void Listen(int listenfd, int num)
 }
 
 
-int Accept(int listenfd, struct sockaddr_in *servaddr, socklen_t *addrlen)
+int Accept(int listenfd, struct sockaddr *servaddr, socklen_t *addrlen)
 {
   int connfd;
-  if ( connfd = accept(listenfd, (struct sockaddr *) servaddr, addrlen)< 0 ) {
-    perror("accept");
-    exit(1);
+  if ( connfd = accept(listenfd, servaddr, addrlen) < 0 ) {
+      perror("accept");
+      exit(1);
   }
 
   return connfd;
