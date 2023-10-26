@@ -27,6 +27,7 @@ int main(int argc, char **argv)
       fprintf(stderr,"inet_pton error for %s\n", argv[1]);
       exit (1);
     }
+
   if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
     fprintf(stderr,"connect error\n");
     exit(1);
@@ -61,6 +62,7 @@ ssize_t FullRead(int fd, void *buf, size_t count)
             buf += nread;
         }   
     }
-	  buf = 0; 
+
+	buf = 0; 
     return (nleft); 
 }

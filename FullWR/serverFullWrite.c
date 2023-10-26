@@ -33,8 +33,8 @@ int main(int argc, char **argv)
     }
     for ( ; ; ) {
         if ( ( connfd = accept(listenfd, (struct sockaddr *) NULL, NULL) ) < 0 ) {
-        perror("accept");
-        exit(1);
+            perror("accept");
+            exit(1);
         }
         ticks = time(NULL);
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
