@@ -1,3 +1,10 @@
+/*
+  Scrivere un server daytime concorrente che conti il numero di client serviti ed invii questo numero aggiornato ad ogni nuovo client che si
+  connette (un client si intende servito quando ha terminato la connessione con il server)
+
+  Es.: “Sei il client #n, la data locale è: …..”
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
